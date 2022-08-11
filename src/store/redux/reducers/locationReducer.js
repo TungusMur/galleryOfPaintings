@@ -4,15 +4,14 @@ const initialState = {
   loading: true,
   data: [],
   status: null,
-  totalCount: 0,
 };
 
-const galleryReducer = createSlice({
-  name: "galleryReducer",
+const locationsReducer = createSlice({
+  name: "locationsReducer",
   initialState,
   reducers: {
     loading: (state) => ({ ...state, loading: true }),
-    getGallery: (state, { payload }) => ({
+    getLocation: (state, { payload }) => ({
       ...state,
       loading: false,
       data: [...payload.data],
@@ -22,7 +21,7 @@ const galleryReducer = createSlice({
   },
 });
 
-const { actions, reducer } = galleryReducer;
+const { actions, reducer } = locationsReducer;
 
-export const { getGallery, loading } = actions;
+export const { loading, getLocation } = actions;
 export default reducer;

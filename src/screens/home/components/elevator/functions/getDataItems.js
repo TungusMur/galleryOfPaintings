@@ -1,6 +1,10 @@
 const getDataItems = (countPage, searchParams, setSearchParams) => {
   const data = [];
 
+  if (countPage === 0) {
+    return [];
+  }
+
   for (let i = 1; i <= countPage; i++) {
     data.push({
       className: "number",
@@ -12,7 +16,7 @@ const getDataItems = (countPage, searchParams, setSearchParams) => {
               setSearchParams(searchParams);
             }
           : () => {
-              searchParams.v;
+              searchParams.set("page", i);
               setSearchParams(searchParams);
             },
     });

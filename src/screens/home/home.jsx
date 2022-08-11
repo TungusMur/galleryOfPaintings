@@ -1,33 +1,39 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import { useEffect, useState, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import getGalleryData from "@store/api/getGalleryData";
-import { getData } from "@store/redux/reducers/galleryReducer";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getAuthorData, getGalleryData, getLocationData } from "@store/api";
+import { getGallery } from "@store/redux/reducers/galleryReducer";
+import { getAuthor } from "@store/redux/reducers/authorReducer";
+import { getLocation } from "@store/redux/reducers/locationReducer";
 import Gallery from "./components/gallery";
 import Elevator from "./components/elevator";
+import FilterBar from "./components/filterBar/filterBar";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const galleryData = useSelector((state) => state.galleryReducer);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    getGalleryData(searchParams.get("page") || 1).then((data) =>
-      dispatch(getData(data))
-    );
+    getAuthorData().then((data) => dispatch(getAuthor(data)));
+    getLocationData().then((data) => dispatch(getLocation(data)));
+  }, []);
+
+  useEffect(() => {
+    getGalleryData(
+      searchParams.get("page") || 1,
+      searchParams.get("authorId")
+    ).then((data) => dispatch(getGallery(data)));
   }, [searchParams]);
 
   return (
     <div className="home">
-      <Gallery data={galleryData} />
-      {galleryData.totalCount > 12 && (
-        <Elevator
-          totalCount={galleryData.totalCount}
-          searchParams={searchParams}
-          setSearchParams={setSearchParams}
-        />
-      )}
+      <FilterBar
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+      />
+      <Gallery />
+      <Elevator searchParams={searchParams} setSearchParams={setSearchParams} />
     </div>
   );
 };
