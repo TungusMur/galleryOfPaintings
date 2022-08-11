@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useDebounce from "@helpers/useDebounce";
 import { useCallback } from "react";
 
 const FilterName = ({ searchParams, setSearchParams }) => {
-  const [valueInput, setValueInput] = useState(
-    searchParams.get("name") || ""
-  );
+  const [valueInput, setValueInput] = useState(searchParams.get("name") || "");
   const setNameSearchParams = useCallback(
     (e) => {
       if (e) {

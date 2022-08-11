@@ -13,7 +13,6 @@ const FilterBar = ({ searchParams, setSearchParams }) => {
     <></>
   ) : (
     <div className="filterBar">
-      <div>input</div>
       <FilterName
         searchParams={searchParams}
         setSearchParams={setSearchParams}

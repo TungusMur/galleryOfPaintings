@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import ButtonActiveFilter from "@shared/buttonActiveFilter";
 
 const FilterAuthor = ({ searchParams, setSearchParams }) => {
   const [active, setActive] = useState(false);
@@ -9,15 +9,14 @@ const FilterAuthor = ({ searchParams, setSearchParams }) => {
   return (
     <div className="filterAuthor">
       <div className="filterAuthor-action">
-        <button
-          onClick={() => {
-            setActive((state) => !state);
-          }}
-        >
-          {authorData.data.filter(
-            (item) => +searchParams.get("authorId") === item.id
-          )[0]?.name || "Author"}
-        </button>
+        <ButtonActiveFilter
+          setActive={setActive}
+          content={
+            authorData.data.filter(
+              (item) => +searchParams.get("authorId") === item.id
+            )[0]?.name || "Author"
+          }
+        />
       </div>
       {active && (
         <div className="filterAuthor-form">
