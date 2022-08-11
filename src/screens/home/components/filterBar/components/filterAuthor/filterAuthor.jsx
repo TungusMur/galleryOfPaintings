@@ -22,8 +22,8 @@ const FilterAuthor = ({ searchParams, setSearchParams }) => {
       {active && (
         <div className="filterAuthor-form">
           {authorData.data.map((item) => (
-            <div className="filterAuthor-item">
-              <label key={item.id} className="filterAuthor-item__label">
+            <div key={item.id} className="filterAuthor-item">
+              <label className="filterAuthor-item__label">
                 <input
                   className="filterAuthor-item__input"
                   type="radio"

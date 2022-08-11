@@ -21,53 +21,55 @@ const getDataItems = (countPage, searchParams, setSearchParams) => {
             },
     });
   }
+  if (countPage > 1) {
+    data.unshift({
+      className: "back",
+      content: "<",
+      onClick: () => {
+        if (searchParams.get("page") - 1 === 1) {
+          searchParams.delete("page");
+          setSearchParams(searchParams);
+        } else if (searchParams.get("page")) {
+          searchParams.set("page", searchParams.get("page") - 1);
+          setSearchParams(searchParams);
+        }
+      },
+    });
 
-  data.unshift({
-    className: "back",
-    content: "<",
-    onClick: () => {
-      if (searchParams.get("page") - 1 === 1) {
+    data.push({
+      className: "next",
+      content: ">",
+      onClick: () => {
+        if (searchParams.get("page") < countPage) {
+          searchParams.set(
+            "page",
+            searchParams.get("page") ? +searchParams.get("page") + 1 : 2
+          );
+          setSearchParams(searchParams);
+        }
+      },
+    });
+  }
+
+  if (countPage > 2) {
+    data.unshift({
+      className: "start",
+      content: "<<",
+      onClick: () => {
         searchParams.delete("page");
         setSearchParams(searchParams);
-      } else if (searchParams.get("page")) {
-        searchParams.set("page", searchParams.get("page") - 1);
+      },
+    });
+
+    data.push({
+      className: "end",
+      content: ">>",
+      onClick: () => {
+        searchParams.set("page", countPage);
         setSearchParams(searchParams);
-      }
-    },
-  });
-
-  data.push({
-    className: "next",
-    content: ">",
-    onClick: () => {
-      if (searchParams.get("page") < countPage) {
-        searchParams.set(
-          "page",
-          searchParams.get("page") ? +searchParams.get("page") + 1 : 2
-        );
-        setSearchParams(searchParams);
-      }
-    },
-  });
-
-  data.unshift({
-    className: "start",
-    content: "<<",
-    onClick: () => {
-      searchParams.delete("page");
-      setSearchParams(searchParams);
-    },
-  });
-
-  data.push({
-    className: "end",
-    content: ">>",
-    onClick: () => {
-      searchParams.set("page", countPage);
-      setSearchParams(searchParams);
-    },
-  });
-
+      },
+    });
+  }
   return data;
 };
 

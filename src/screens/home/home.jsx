@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getAuthorData, getGalleryData, getLocationData } from "@store/api";
-import { getGallery } from "@store/redux/reducers/galleryReducer";
+import { getGallery, loading } from "@store/redux/reducers/galleryReducer";
 import { getAuthor } from "@store/redux/reducers/authorReducer";
 import { getLocation } from "@store/redux/reducers/locationReducer";
 import Gallery from "./components/gallery";
@@ -20,9 +20,12 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    dispatch(loading());
     getGalleryData(
       searchParams.get("page") || 1,
-      searchParams.get("authorId")
+      searchParams.get("authorId"),
+      searchParams.get("locationId"),
+      searchParams.get("name")
     ).then((data) => dispatch(getGallery(data)));
   }, [searchParams]);
 

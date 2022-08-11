@@ -94,6 +94,7 @@ module.exports = {
       "@src": path.resolve(__dirname, "../src"),
       "@store": path.resolve(__dirname, "../src/store"),
       "@styles": path.resolve(__dirname, "../src/styles"),
+      "@helpers": path.resolve(__dirname, "../src/helpers"),
     },
   },
   optimization: optimization(),
