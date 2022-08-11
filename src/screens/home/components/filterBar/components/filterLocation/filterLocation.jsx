@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import ButtonActiveFilter from "@shared/buttonActiveFilter";
+import ButtonResetFilter from "@shared/buttonResetFilter";
 
 const FilterLocation = ({ searchParams, setSearchParams }) => {
   const [active, setActive] = useState(false);
@@ -8,15 +10,21 @@ const FilterLocation = ({ searchParams, setSearchParams }) => {
   return (
     <div className="filterLocation">
       <div className="filterLocation-action">
-        <button
-          onClick={() => {
-            setActive((state) => !state);
-          }}
-        >
-          {locationData.data.filter(
-            (item) => +searchParams.get("locationId") === item.id
-          )[0]?.location || "Location"}
-        </button>
+        <ButtonActiveFilter
+          setActive={setActive}
+          content={
+            locationData.data.filter(
+              (item) => +searchParams.get("locationId") === item.id
+            )[0]?.location || "Location"
+          }
+        />
+        {searchParams.get("locationId") && (
+          <ButtonResetFilter
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+            property="locationId"
+          />
+        )}
       </div>
       {active && (
         <div className="filterLocation-form">

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import FilterAuthor from "./components/filterAuthor";
 import FilterLocation from "./components/filterLocation";
 import FilterName from "./components/filterName";
+import FilterDate from "./components/filterDate";
 
 const FilterBar = ({ searchParams, setSearchParams }) => {
   const loading = useSelector((state) => [
@@ -22,6 +23,10 @@ const FilterBar = ({ searchParams, setSearchParams }) => {
         setSearchParams={setSearchParams}
       />
       <FilterLocation
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+      />
+      <FilterDate
         searchParams={searchParams}
         setSearchParams={setSearchParams}
       />

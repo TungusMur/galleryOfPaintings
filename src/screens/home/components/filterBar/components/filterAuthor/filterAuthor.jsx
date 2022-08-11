@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ButtonActiveFilter from "@shared/buttonActiveFilter";
+import ButtonResetFilter from "@shared/buttonResetFilter";
 
 const FilterAuthor = ({ searchParams, setSearchParams }) => {
   const [active, setActive] = useState(false);
@@ -17,6 +18,13 @@ const FilterAuthor = ({ searchParams, setSearchParams }) => {
             )[0]?.name || "Author"
           }
         />
+        {searchParams.get("authorId") && (
+          <ButtonResetFilter
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+            property="authorId"
+          />
+        )}
       </div>
       {active && (
         <div className="filterAuthor-form">

@@ -9,27 +9,32 @@ const Gallery = () => {
     authorData: state.authorReducer,
     locationData: state.locationReducer,
   }));
+  const loadingData = [
+    data.galleryData.loading,
+    data.authorData.loading,
+    data.locationData.loading,
+  ];
+  const statusData = [
+    data.galleryData.status,
+    data.authorData.status,
+    data.locationData.status,
+  ];
 
   return (
     <div className="gallery">
-      {[
-        data.galleryData.loading,
-        data.authorData.loading,
-        data.locationData.loading,
-      ].includes(true) ? (
+      {loadingData.includes(true) ? (
         "loading"
-      ) : [
-          data.galleryData.status,
-          data.authorData.status,
-          data.locationData.status,
-        ].reduce((sum, item) => (item === 200 ? sum + 1 : sum), 0) === 3 ? (
+      ) : statusData.reduce(
+          (sum, item) => (item === 200 ? sum + 1 : sum),
+          0
+        ) === 3 ? (
         <div className="gallery-content">
           {data.galleryData.data.map((item) => (
             <GalleryItem
               key={item.id}
               img={item.imageUrl}
               name={item.name}
-              author={data.authorData.data[item.authorId].author}
+              author={data.authorData.data[item.authorId].name}
               created={item.created}
               location={data.locationData.data[item.locationId].location}
             />
