@@ -1,4 +1,5 @@
 import React from "react";
+import ArrowDown from "../../assets/img/light/arrowDown.svg";
 
 const ButtonActiveFilter = ({ setActive, content }) => (
   <div className="buttonActiveFilter">
@@ -9,7 +10,7 @@ const ButtonActiveFilter = ({ setActive, content }) => (
       }}
     >
       <div className="buttonActiveFilter-content">{content}</div>
-      <div className="buttonActiveFilter__img">\/</div>
+      <img className="buttonActiveFilter__img" src={ArrowDown} alt="arrowDown" />
     </button>
   </div>
 );

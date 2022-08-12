@@ -26,7 +26,7 @@ const Elevator = ({ limitCount = 12, searchParams, setSearchParams }) => {
               className={`elevator-item__button elevator-item__button_${item.className}`}
               onClick={item.onClick}
             >
-              {item.content}
+              {item.content()}
             </button>
           ))}
         </div>

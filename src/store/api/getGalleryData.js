@@ -11,8 +11,8 @@ const getGalleryData = (
 ) =>
   api.get(
     `/paintings?_limit=${limit}&_page=${page}${
-      authorId ? `&authorId=${authorId - 1}` : ""
-    }${locationId ? `&locationId=${locationId - 1}` : ""}
+      authorId ? `&authorId=${authorId}` : ""
+    }${locationId ? `&locationId=${locationId}` : ""}
     ${
       createdGte && createdLte
         ? `&created_gte=${createdGte}&created_lte=${createdLte}`

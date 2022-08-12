@@ -34,9 +34,9 @@ const Gallery = () => {
               key={item.id}
               img={item.imageUrl}
               name={item.name}
-              author={data.authorData.data[item.authorId].name}
+              author={data.authorData.data[item.authorId - 1].name}
               created={item.created}
-              location={data.locationData.data[item.locationId].location}
+              location={data.locationData.data[item.locationId - 1].location}
             />
           ))}
         </div>

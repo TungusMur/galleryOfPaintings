@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import Cross from "../../assets/img/light/cross.svg";
 
 const ButtonResetFilter = ({
   searchParams,
@@ -21,7 +22,7 @@ const ButtonResetFilter = ({
   return (
     <div className="buttonResetFilter">
       <button className="buttonResetFilter__button" onClick={handlerOnClick}>
-        Крестик
+        <img className="buttonResetFilter__img" src={Cross} alt="cross" />
       </button>
     </div>
   );

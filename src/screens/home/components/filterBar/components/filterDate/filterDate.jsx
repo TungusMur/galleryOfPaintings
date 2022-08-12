@@ -39,6 +39,7 @@ const FilterDate = ({ searchParams, setSearchParams }) => {
         searchParams.append("created", created.gte);
         searchParams.append("created", 2000);
         setSearchParams(searchParams);
+        setCreated((state) => ({ ...state, lte: 2000 }));
       }
       setActive(false);
     }
@@ -79,8 +80,8 @@ const FilterDate = ({ searchParams, setSearchParams }) => {
             created={created}
             setCreated={setCreated}
             setActive={setActive}
-            property="lte"
-            propertyOther="gte"
+            property="gte"
+            propertyOther="lte"
             id="from"
             searchId="before"
           />
@@ -91,8 +92,8 @@ const FilterDate = ({ searchParams, setSearchParams }) => {
             created={created}
             setCreated={setCreated}
             setActive={setActive}
-            property="gte"
-            propertyOther="lte"
+            property="lte"
+            propertyOther="gte"
             id="before"
             searchId="from"
           />
