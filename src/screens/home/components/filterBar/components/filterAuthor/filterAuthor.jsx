@@ -2,6 +2,7 @@ import React, { useState, useCallback, useRef } from "react";
 import { useSelector } from "react-redux";
 import ButtonActiveFilter from "@shared/buttonActiveFilter";
 import ButtonResetFilter from "@shared/buttonResetFilter";
+import FilterForm from "@shared/filterForm";
 import { useOutsideClick } from "@helpers";
 
 const FilterAuthor = ({ searchParams, setSearchParams }) => {
@@ -36,26 +37,14 @@ const FilterAuthor = ({ searchParams, setSearchParams }) => {
         )}
       </div>
       {active && (
-        <div className="filterAuthor-form">
-          {authorData.data.map((item) => (
-            <div key={item.id} className="filterAuthor-item">
-              <label className="filterAuthor-item__label">
-                <input
-                  className="filterAuthor-item__input"
-                  type="radio"
-                  checked={+searchParams.get("authorId") === item.id}
-                  onChange={() => {
-                    searchParams.set("authorId", item.id);
-                    searchParams.delete("page");
-                    setSearchParams(searchParams);
-                    setActive(false);
-                  }}
-                />
-                {item.name}
-              </label>
-            </div>
-          ))}
-        </div>
+        <FilterForm
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+          data={authorData.data}
+          setActive={setActive}
+          property="name"
+          searchProperty="authorId"
+        />
       )}
     </div>
   );
