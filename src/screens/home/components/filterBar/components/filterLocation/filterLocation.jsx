@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { useSelector } from "react-redux";
 import ButtonActiveFilter from "@shared/buttonActiveFilter";
 import ButtonResetFilter from "@shared/buttonResetFilter";
+import { useOutsideClick } from "@helpers";
 
 const FilterLocation = ({ searchParams, setSearchParams }) => {
   const [active, setActive] = useState(false);
   const locationData = useSelector((state) => state.locationReducer);
+  const filterRef = useRef(null);
+  const handlerClick = useCallback(() => {
+    if (active) {
+      setActive(false);
+    }
+  }, [active]);
+
+  useOutsideClick(filterRef, handlerClick);
 
   return (
-    <div className="filterLocation">
+    <div className="filterLocation" ref={filterRef}>
       <div className="filterLocation-action">
         <ButtonActiveFilter
           setActive={setActive}
@@ -18,7 +27,7 @@ const FilterLocation = ({ searchParams, setSearchParams }) => {
             )[0]?.location || "Location"
           }
         />
-        {searchParams.get("locationId") && (
+        {searchParams.has("locationId") && (
           <ButtonResetFilter
             searchParams={searchParams}
             setSearchParams={setSearchParams}

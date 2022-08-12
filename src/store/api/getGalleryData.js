@@ -15,7 +15,7 @@ const getGalleryData = (
     }${locationId ? `&locationId=${locationId}` : ""}
     ${
       createdGte && createdLte
-        ? `&created_gte=${locationId}&created_lte=${locationId}`
+        ? `&created_gte=${createdGte}&created_lte=${createdLte}`
         : ""
     }${name ? `&q=${name}` : ""}`
   );

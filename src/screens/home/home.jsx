@@ -25,7 +25,9 @@ const Home = () => {
       searchParams.get("page") || 1,
       searchParams.get("authorId"),
       searchParams.get("locationId"),
-      searchParams.get("name")
+      searchParams.get("name"),
+      searchParams.getAll("created")[0],
+      searchParams.getAll("created")[1]
     ).then((data) => dispatch(getGallery(data)));
   }, [searchParams]);
 

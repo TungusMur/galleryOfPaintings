@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useDebounce from "@helpers/useDebounce";
+import { useDebounce } from "@helpers";
 import { useCallback } from "react";
 import ButtonResetFilter from "@shared/buttonResetFilter";
 
@@ -30,7 +30,7 @@ const FilterName = ({ searchParams, setSearchParams }) => {
           setValueInput(e.target.value);
         }}
       />
-      {searchParams.get("name") && (
+      {searchParams.has("name") && (
         <ButtonResetFilter
           searchParams={searchParams}
           setSearchParams={setSearchParams}

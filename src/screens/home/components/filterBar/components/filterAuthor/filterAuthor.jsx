@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import { useSelector } from "react-redux";
 import ButtonActiveFilter from "@shared/buttonActiveFilter";
 import ButtonResetFilter from "@shared/buttonResetFilter";
+import { useOutsideClick } from "@helpers";
 
 const FilterAuthor = ({ searchParams, setSearchParams }) => {
   const [active, setActive] = useState(false);
   const authorData = useSelector((state) => state.authorReducer);
+  const filterRef = useRef(null);
+  const handlerClick = useCallback(() => {
+    if (active) {
+      setActive(false);
+    }
+  }, [active]);
+
+  useOutsideClick(filterRef, handlerClick);
 
   return (
-    <div className="filterAuthor">
+    <div className="filterAuthor" ref={filterRef}>
       <div className="filterAuthor-action">
         <ButtonActiveFilter
           setActive={setActive}
@@ -18,7 +27,7 @@ const FilterAuthor = ({ searchParams, setSearchParams }) => {
             )[0]?.name || "Author"
           }
         />
-        {searchParams.get("authorId") && (
+        {searchParams.has("authorId") && (
           <ButtonResetFilter
             searchParams={searchParams}
             setSearchParams={setSearchParams}
