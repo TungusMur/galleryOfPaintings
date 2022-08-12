@@ -7,6 +7,10 @@ const ButtonResetFilter = ({
   additionOnClick = null,
 }) => {
   const handlerOnClick = useCallback(() => {
+    if (additionOnClick) {
+      additionOnClick();
+    }
+
     searchParams.delete(property);
     setSearchParams(searchParams);
     if (additionOnClick) {

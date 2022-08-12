@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback } from "react";
 import ButtonActiveFilter from "@shared/buttonActiveFilter";
 import ButtonResetFilter from "@shared/buttonResetFilter";
 import { useOutsideClick } from "@helpers";
+import FilterDateItem from "./components/filterDateItem";
 
 const FilterDate = ({ searchParams, setSearchParams }) => {
   const [active, setActive] = useState(false);
@@ -64,64 +65,37 @@ const FilterDate = ({ searchParams, setSearchParams }) => {
             searchParams={searchParams}
             setSearchParams={setSearchParams}
             property="created"
+            additionOnClick={() => {
+              setCreated({ gte: "", lte: "" });
+            }}
           />
         )}
       </div>
       {active && (
         <div className="filterDate-form">
-          <div className="filterDate-from filterDate-item">
-            <input
-              className="filterDate-item__input"
-              type="number"
-              id="from"
-              value={created.gte}
-              placeholder={"from"}
-              onChange={(e) => {
-                setCreated((state) => ({ ...state, gte: e.target.value }));
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  if (created.gte && created.lte) {
-                    searchParams.delete("created");
-                    searchParams.append("created", created.gte);
-                    searchParams.append("created", created.lte);
-                    searchParams.delete("page");
-                    setSearchParams(searchParams);
-                    setActive(false);
-                  } else if (!created.lte) {
-                    document.getElementById("before").focus();
-                  }
-                }
-              }}
-            ></input>
-          </div>
+          <FilterDateItem
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+            created={created}
+            setCreated={setCreated}
+            setActive={setActive}
+            property="lte"
+            propertyOther="gte"
+            id="from"
+            searchId="before"
+          />
           <div className="filterDate-line">-</div>
-          <div className="filterDate-before filterDate-item">
-            <input
-              className="filterDate-item__input"
-              id="before"
-              type="number"
-              value={created.lte}
-              placeholder={"before"}
-              onChange={(e) => {
-                setCreated((state) => ({ ...state, lte: e.target.value }));
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  if (created.gte && created.lte) {
-                    searchParams.delete("created");
-                    searchParams.append("created", created.gte);
-                    searchParams.append("created", created.lte);
-                    searchParams.delete("page");
-                    setSearchParams(searchParams);
-                    setActive(false);
-                  } else if (!created.gte) {
-                    document.getElementById("from").focus();
-                  }
-                }
-              }}
-            ></input>
-          </div>
+          <FilterDateItem
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+            created={created}
+            setCreated={setCreated}
+            setActive={setActive}
+            property="gte"
+            propertyOther="lte"
+            id="before"
+            searchId="from"
+          />
         </div>
       )}
     </div>
