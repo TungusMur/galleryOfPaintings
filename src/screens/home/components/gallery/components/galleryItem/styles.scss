@@ -1,0 +1,36 @@
+.galleryItem {
+  margin-bottom: 20px;
+  width: 360px;
+  height: 275px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    background: #efefef;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+  }
+}
+
+.galleryItem-content {
+  display: none;
+}
+
+.galleryItem-stopper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #efefef;
+  z-index: 0;
+}

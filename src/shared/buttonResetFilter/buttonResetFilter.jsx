@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import Cross from "../../assets/img/light/cross.svg";
+import "./styles.scss";
 
 const ButtonResetFilter = ({
   searchParams,

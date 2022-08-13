@@ -1,0 +1,62 @@
+.elevator {
+  width: auto;
+  margin: 20px 0px;
+}
+
+.elevator-form {
+  display: flex;
+}
+
+.elevator-item__button {
+  padding: 0;
+  margin: 0;
+  width: 41px;
+  height: 41px;
+  display: flex;
+  justify-content: center;
+  outline: 1px solid #000;
+  border: 0;
+  background: #fff;
+
+  &:hover {
+    background: #ededed;
+  }
+
+  p {
+    align-self: center;
+  }
+
+  &_number {
+    &.active {
+      background: #000;
+      color: #fff;
+    }
+  }
+
+  &_start,
+  &_end,
+  &_back,
+  &_next {
+    &.notActive {
+      outline-color: rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        background: #fff;
+      }
+    }
+  }
+
+  &_start {
+    border-radius: 7px 0px 0px 7px;
+  }
+
+  &_end {
+    border-radius: 0px 7px 7px 0px;
+  }
+}
+
+.elevator-item__img {
+  width: 14px;
+  height: 13px;
+  align-self: center;
+}

@@ -1,13 +1,14 @@
 import React from "react";
+import "./styles.scss";
 
 const GalleryItem = ({ img, name, author, created, location }) => {
   return (
     <div className="galleryItem">
-      <img
+      <div
         className="galleryItem__img"
-        alt={name}
-        src={process.env.BASE_URL + img}
-      />
+        style={{ backgroundImage: `url(${process.env.BASE_URL + img})` }}
+      ></div>
+      <div className="galleryItem-stopper"></div>
       <div className="galleryItem-content">
         <div className="galleryItem-name">
           <p>{name}</p>

@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { getDataItems } from "./functions";
+import "./styles.scss";
 
 const Elevator = ({ limitCount = 12, searchParams, setSearchParams }) => {
   const galleryData = useSelector((state) => state.galleryReducer);

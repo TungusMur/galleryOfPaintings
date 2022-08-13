@@ -18,8 +18,8 @@ const getDataItems = (countPage, searchParams, setSearchParams) => {
 
   for (let i = 1; i <= countPage; i++) {
     data.push({
-      className: `number${
-        +pageActive === i || (!pageActive && i === 1) ? "_active" : ""
+      className: `number ${
+        +pageActive === i || (!pageActive && i === 1) ? "active" : ""
       }`,
       content: () => <p>{i}</p>,
       onClick:
@@ -36,7 +36,7 @@ const getDataItems = (countPage, searchParams, setSearchParams) => {
   }
   if (countPage > 1) {
     data.unshift({
-      className: `back${!pageActive ? "_notActive" : "_active"}`,
+      className: `back ${!pageActive ? "notActive" : "active"}`,
       content: () => (
         <img
           className="elevator-item__img"
@@ -56,7 +56,7 @@ const getDataItems = (countPage, searchParams, setSearchParams) => {
     });
 
     data.push({
-      className: `next${+pageActive === countPage ? "_notActive" : "_active"}`,
+      className: `next ${+pageActive === countPage ? "notActive" : "active"}`,
       content: () => (
         <img
           className="elevator-item__img"
@@ -75,7 +75,7 @@ const getDataItems = (countPage, searchParams, setSearchParams) => {
 
   if (countPage > 2) {
     data.unshift({
-      className: `start${!pageActive ? "_notActive" : "_active"}`,
+      className: `start ${!pageActive ? "notActive" : "active"}`,
       content: () => (
         <img
           className="elevator-item__img"
@@ -90,7 +90,7 @@ const getDataItems = (countPage, searchParams, setSearchParams) => {
     });
 
     data.push({
-      className: `end${+pageActive === countPage ? "_notActive" : "_active"}`,
+      className: `end ${+pageActive === countPage ? "notActive" : "active"}`,
       content: () => (
         <img
           className="elevator-item__img"

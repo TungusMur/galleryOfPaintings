@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDebounce } from "@helpers";
 import { useCallback } from "react";
 import ButtonResetFilter from "@shared/buttonResetFilter";
+import "./styles.scss";
 
 const FilterName = ({ searchParams, setSearchParams }) => {
   const [valueInput, setValueInput] = useState(searchParams.get("name") || "");
@@ -21,7 +22,7 @@ const FilterName = ({ searchParams, setSearchParams }) => {
   useDebounce(valueInput, setNameSearchParams, 500);
 
   return (
-    <div className="filtertName">
+    <div className="filtertName filterItem">
       <input
         className="filtertName__input"
         placeholder="Name"

@@ -9,6 +9,7 @@ import { getLocation } from "@store/redux/reducers/locationReducer";
 import Gallery from "./components/gallery";
 import Elevator from "./components/elevator";
 import FilterBar from "./components/filterBar/filterBar";
+import "./styles.scss";
 
 const Home = () => {
   const dispatch = useDispatch();

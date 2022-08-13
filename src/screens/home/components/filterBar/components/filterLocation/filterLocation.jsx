@@ -4,6 +4,7 @@ import ButtonActiveFilter from "@shared/buttonActiveFilter";
 import ButtonResetFilter from "@shared/buttonResetFilter";
 import FilterForm from "@shared/filterForm";
 import { useOutsideClick } from "@helpers";
+import "./styles.scss";
 
 const FilterLocation = ({ searchParams, setSearchParams }) => {
   const [active, setActive] = useState(false);
@@ -18,8 +19,12 @@ const FilterLocation = ({ searchParams, setSearchParams }) => {
   useOutsideClick(filterRef, handlerClick);
 
   return (
-    <div className="filterLocation" ref={filterRef}>
-      <div className="filterLocation-action">
+    <div className="filterLocation filterItem" ref={filterRef}>
+      <div
+        className={`filterLocation-action filterItem-action ${
+          active ? "active" : ""
+        }`}
+      >
         <ButtonActiveFilter
           setActive={setActive}
           content={
@@ -35,17 +40,17 @@ const FilterLocation = ({ searchParams, setSearchParams }) => {
             property="locationId"
           />
         )}
+        {active && (
+          <FilterForm
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+            data={locationData.data}
+            setActive={setActive}
+            property="location"
+            searchProperty="locationId"
+          />
+        )}
       </div>
-      {active && (
-        <FilterForm
-          searchParams={searchParams}
-          setSearchParams={setSearchParams}
-          data={locationData.data}
-          setActive={setActive}
-          property="location"
-          searchProperty="locationId"
-        />
-      )}
     </div>
   );
 };

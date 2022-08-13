@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles.scss";
 
 const FilterDateItem = ({
   searchParams,
@@ -12,9 +13,9 @@ const FilterDateItem = ({
   searchId,
 }) => {
   return (
-    <div className="FilterDateItem">
+    <div className="filterDateItem">
       <input
-        className="FilterDateItem__input"
+        className="filterDateItem__input"
         id={id}
         type="number"
         value={created[property]}

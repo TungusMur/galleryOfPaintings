@@ -4,6 +4,7 @@ import FilterAuthor from "./components/filterAuthor";
 import FilterLocation from "./components/filterLocation";
 import FilterName from "./components/filterName";
 import FilterDate from "./components/filterDate";
+import "./styles.scss";
 
 const FilterBar = ({ searchParams, setSearchParams }) => {
   const loading = useSelector((state) => [

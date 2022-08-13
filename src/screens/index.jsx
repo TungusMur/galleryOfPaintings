@@ -1,6 +1,7 @@
 import React from "react";
-import { Route, Routes, Outlet } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./home";
+import "./styles.scss";
 
 const Error = () => <div>error</div>;
 

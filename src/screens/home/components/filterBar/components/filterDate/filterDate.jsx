@@ -3,6 +3,7 @@ import ButtonActiveFilter from "@shared/buttonActiveFilter";
 import ButtonResetFilter from "@shared/buttonResetFilter";
 import { useOutsideClick } from "@helpers";
 import FilterDateItem from "./components/filterDateItem";
+import "./styles.scss";
 
 const FilterDate = ({ searchParams, setSearchParams }) => {
   const [active, setActive] = useState(false);
@@ -48,8 +49,12 @@ const FilterDate = ({ searchParams, setSearchParams }) => {
   useOutsideClick(filterRef, handlerClick);
 
   return (
-    <div className="filterDate" ref={filterRef}>
-      <div className="filterDate-action">
+    <div className="filterDate filterItem" ref={filterRef}>
+      <div
+        className={`filterDate-action filterItem-action ${
+          active ? "active" : ""
+        }`}
+      >
         <ButtonActiveFilter
           setActive={setActive}
           content={
@@ -71,34 +76,34 @@ const FilterDate = ({ searchParams, setSearchParams }) => {
             }}
           />
         )}
+        {active && (
+          <div className="filterDate-form">
+            <FilterDateItem
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+              created={created}
+              setCreated={setCreated}
+              setActive={setActive}
+              property="gte"
+              propertyOther="lte"
+              id="from"
+              searchId="before"
+            />
+            <div className="filterDate-line">-</div>
+            <FilterDateItem
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+              created={created}
+              setCreated={setCreated}
+              setActive={setActive}
+              property="lte"
+              propertyOther="gte"
+              id="before"
+              searchId="from"
+            />
+          </div>
+        )}
       </div>
-      {active && (
-        <div className="filterDate-form">
-          <FilterDateItem
-            searchParams={searchParams}
-            setSearchParams={setSearchParams}
-            created={created}
-            setCreated={setCreated}
-            setActive={setActive}
-            property="gte"
-            propertyOther="lte"
-            id="from"
-            searchId="before"
-          />
-          <div className="filterDate-line">-</div>
-          <FilterDateItem
-            searchParams={searchParams}
-            setSearchParams={setSearchParams}
-            created={created}
-            setCreated={setCreated}
-            setActive={setActive}
-            property="lte"
-            propertyOther="gte"
-            id="before"
-            searchId="from"
-          />
-        </div>
-      )}
     </div>
   );
 };

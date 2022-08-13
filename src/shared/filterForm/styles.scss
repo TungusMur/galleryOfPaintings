@@ -1,0 +1,50 @@
+.filterForm {
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-height: calc(100% - 53px);
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  &::-webkit-scrollbar {
+    width: 9px;
+    padding-right: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #7b7b7b;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);
+  }
+}
+
+.filterForm-item {
+  display: flex;
+  transition: 0.3s;
+
+  &:hover {
+    background: #000000;
+
+    .filterForm-item__label {
+      color: #fff;
+    }
+  }
+}
+
+.filterForm-item__label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 10px 30px;
+  width: calc(100% - 60px);
+  cursor: pointer;
+}
+
+.filterForm-item__input {
+  width: 0;
+}
