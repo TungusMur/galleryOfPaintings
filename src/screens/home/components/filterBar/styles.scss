@@ -48,7 +48,7 @@
   transition: 0s;
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: var(--background-color-filter);
 
   &.active {
     border-color: var(--border-color-input-active);
