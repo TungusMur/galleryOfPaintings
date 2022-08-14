@@ -1,16 +1,10 @@
 import React from "react";
-import ArrowBack from "../../../../../assets/img/light/arrowBack.svg";
-import ArrowBackNotActive from "../../../../../assets/img/light/ArrowBackNotActive.svg";
-import ArrowStart from "../../../../../assets/img/light/arrowStart.svg";
-import ArrowStartNotActive from "../../../../../assets/img/light/ArrowStartNotActive.svg";
-import ArrowNext from "../../../../../assets/img/light/arrowNext.svg";
-import ArrowNextNotActive from "../../../../../assets/img/light/ArrowNextNotActive.svg";
-import ArrowEnd from "../../../../../assets/img/light/arrowEnd.svg";
-import ArrowEndNotActive from "../../../../../assets/img/light/ArrowEndNotActive.svg";
+import getDataImg from "./getDataImg";
 
-const getDataItems = (countPage, searchParams, setSearchParams) => {
+const getDataItems = (countPage, searchParams, setSearchParams, themeState) => {
   const data = [];
   const pageActive = searchParams.get("page");
+  const dataimg = getDataImg(themeState);
 
   if (countPage === 0) {
     return [];
@@ -21,7 +15,7 @@ const getDataItems = (countPage, searchParams, setSearchParams) => {
       className: `number ${
         +pageActive === i || (!pageActive && i === 1) ? "active" : ""
       }`,
-      content: () => <p>{i}</p>,
+      content: () => <h1>{i}</h1>,
       onClick:
         i === 1
           ? () => {
@@ -40,7 +34,7 @@ const getDataItems = (countPage, searchParams, setSearchParams) => {
       content: () => (
         <img
           className="elevator-item__img"
-          src={!pageActive ? ArrowBackNotActive : ArrowBack}
+          src={!pageActive ? dataimg.ArrowBackNotActive : dataimg.ArrowBack}
           alt="arrowBack"
         />
       ),
@@ -60,7 +54,11 @@ const getDataItems = (countPage, searchParams, setSearchParams) => {
       content: () => (
         <img
           className="elevator-item__img"
-          src={+pageActive === countPage ? ArrowNextNotActive : ArrowNext}
+          src={
+            +pageActive === countPage
+              ? dataimg.ArrowNextNotActive
+              : dataimg.ArrowNext
+          }
           alt="arrowNext"
         />
       ),
@@ -79,7 +77,7 @@ const getDataItems = (countPage, searchParams, setSearchParams) => {
       content: () => (
         <img
           className="elevator-item__img"
-          src={!pageActive ? ArrowStartNotActive : ArrowStart}
+          src={!pageActive ? dataimg.ArrowStartNotActive : dataimg.ArrowStart}
           alt="arrowStart"
         />
       ),
@@ -94,7 +92,11 @@ const getDataItems = (countPage, searchParams, setSearchParams) => {
       content: () => (
         <img
           className="elevator-item__img"
-          src={+pageActive === countPage ? ArrowEndNotActive : ArrowEnd}
+          src={
+            +pageActive === countPage
+              ? dataimg.ArrowEndNotActive
+              : dataimg.ArrowEnd
+          }
           alt="arrowEnd"
         />
       ),

@@ -5,14 +5,16 @@ import "./styles.scss";
 
 const Elevator = ({ limitCount = 12, searchParams, setSearchParams }) => {
   const galleryData = useSelector((state) => state.galleryReducer);
+  const themeState = useSelector((state) => state.themeReducer.theme);
   const dataElevator = useMemo(
     () =>
       getDataItems(
         Math.ceil(galleryData.totalCount / limitCount),
         searchParams,
-        setSearchParams
+        setSearchParams,
+        themeState
       ),
-    [galleryData]
+    [galleryData, themeState]
   );
 
   return (

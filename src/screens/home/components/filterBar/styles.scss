@@ -3,22 +3,46 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  width: 1120px;
-  position: fixed;
-  background: #fff;
+  width: 100%;
+  // position: fixed;
+  background: var(--background-color);
   padding: 20px 0px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    padding: 10px 0px;
+  }
 }
 
 .filterItem {
   width: 265px;
   height: 45px;
   position: relative;
+  z-index: 1;
+
+  @media screen and (max-width: 1366px) {
+    width: 220px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 160px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 280px;
+    margin-bottom: 15px;
+  }
+
+  &.active {
+    z-index: 2;
+  }
 }
 
 .filterItem-action {
-  position: absolute;
+  // position: absolute;
   box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid;
+  border-color: var(--border-color-input);
   border-radius: 8px;
   overflow: hidden;
   transition: 0s;
@@ -27,7 +51,7 @@
   background: #fff;
 
   &.active {
-    border-color: rgba(0, 0, 0, 1);
+    border-color: var(--border-color-input-active);
     transition: 0.5s;
 
     & .buttonActiveFilter__img {

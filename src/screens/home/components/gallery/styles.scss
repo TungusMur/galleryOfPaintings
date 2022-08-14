@@ -1,12 +1,31 @@
 .gallery {
   width: 100%;
-  margin-top: 85px;
+  // margin-top: 85px;
 }
 
 .gallery-content {
   margin: 25px 0px 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   width: 100%;
+
+  @media screen and (max-width: 768px) {
+    margin: 10px 0px 10px;
+  }
+}
+
+.gallery-loading {
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 85px - 117px);
+  align-items: center;
+
+  &__img {
+    width: 100px;
+    height: 100px;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: calc(100vh - 260px - 107px);
+  }
 }

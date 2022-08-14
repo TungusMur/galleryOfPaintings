@@ -49,7 +49,10 @@ const FilterDate = ({ searchParams, setSearchParams }) => {
   useOutsideClick(filterRef, handlerClick);
 
   return (
-    <div className="filterDate filterItem" ref={filterRef}>
+    <div
+      className={`filterDate filterItem ${active ? "active" : ""}`}
+      ref={filterRef}
+    >
       <div
         className={`filterDate-action filterItem-action ${
           active ? "active" : ""
@@ -89,7 +92,7 @@ const FilterDate = ({ searchParams, setSearchParams }) => {
               id="from"
               searchId="before"
             />
-            <div className="filterDate-line">-</div>
+            <div className="filterDate-line" />
             <FilterDateItem
               searchParams={searchParams}
               setSearchParams={setSearchParams}

@@ -30,7 +30,7 @@ const FilterForm = ({
               checked={+searchParams.get(searchProperty) === item.id}
               onChange={() => handlerChange(item.id)}
             />
-            {item[property]}
+            <h2>{item[property]}</h2>
           </label>
         </div>
       ))}

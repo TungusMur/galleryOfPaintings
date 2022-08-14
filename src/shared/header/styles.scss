@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  //   position: fixed;
+  width: 1120px;
+  z-index: 2;
+  background: var(--background-color);
+  padding: 35px 0px 15px;
+
+  @media screen and (max-width: 1366px) {
+    width: 940px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 700px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 280px;
+    padding: 25px 0px 15px;
+  }
+}
+
+.header-logo__img {
+  width: 64px;
+  height: 64px;
+}
+
+.header-action__button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}

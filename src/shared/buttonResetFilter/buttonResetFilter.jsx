@@ -1,5 +1,7 @@
 import React, { useCallback } from "react";
-import Cross from "../../assets/img/light/cross.svg";
+import CrossLight from "@assets/img/light/cross.svg";
+import CrossDark from "@assets/img/dark/cross.svg";
+import { useSelector } from "react-redux";
 import "./styles.scss";
 
 const ButtonResetFilter = ({
@@ -8,6 +10,7 @@ const ButtonResetFilter = ({
   property,
   additionOnClick = null,
 }) => {
+  const themeState = useSelector((state) => state.themeReducer.theme);
   const handlerOnClick = useCallback(() => {
     if (additionOnClick) {
       additionOnClick();
@@ -23,7 +26,11 @@ const ButtonResetFilter = ({
   return (
     <div className="buttonResetFilter">
       <button className="buttonResetFilter__button" onClick={handlerOnClick}>
-        <img className="buttonResetFilter__img" src={Cross} alt="cross" />
+        <img
+          className="buttonResetFilter__img"
+          src={themeState === "dark" ? CrossDark : CrossLight}
+          alt="cross"
+        />
       </button>
     </div>
   );

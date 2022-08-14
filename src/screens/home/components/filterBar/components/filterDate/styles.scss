@@ -6,13 +6,37 @@
 
   &.active {
     height: 130px;
+
+    @media screen and (max-width: 1366px) {
+      height: 205px;
+    }
+
+    @media screen and (max-width: 768px) {
+      height: 131px;
+    }
   }
 }
 
 .filterDate-form {
-    display: flex;
-    width: 222px;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  width: 222px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+
+  @media screen and (max-width: 1366px) {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 245px;
+    flex-direction: row;
+  }
+}
+
+.filterDate-line {
+  height: 1px;
+  width: 12px;
+  margin: 15px 0px;
+  background: #000;
 }

@@ -10,19 +10,113 @@
   overflow: hidden;
   position: relative;
 
+  &:hover .galleryItem-content {
+    bottom: 0px;
+  }
+
   &__img {
     width: 100%;
     height: 100%;
-    background: #efefef;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 1;
   }
+  &:nth-child(3n - 1) {
+    margin-right: 20px;
+    margin-left: 20px;
+    @media screen and (max-width: 1024px) {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  @media screen and (max-width: 1366px) {
+    width: 300px;
+    height: 230px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 340px;
+    height: 249px;
+
+    &:nth-child(2n - 1) {
+      margin-right: 20px;
+
+      @media screen and (max-width: 768px) {
+        margin-right: 0px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 280px;
+    height: 205px;
+    margin-bottom: 21px;
+  }
 }
 
+// .galleryItem-stopper {
+//   background: none;
+//   position: absolute;
+//   top: 1px;
+//   right: 0;
+//   width: 99%;
+//   height: 99%;
+//   background: none;
+//   display: flex;
+//   z-index: 0;
+//   justify-content: center;
+//   align-items: center;
+//   box-sizing: border-box;
+//   border: 1px solid var(--border-color-input-active);
+//   border-radius: 20px;
+
+//   &__img {
+//     width: 70px;
+//     height: 70px;
+//   }
+// }
+
 .galleryItem-content {
-  display: none;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.75);
+  height: 145px;
+  bottom: -115px;
+  transition: 0.2s;
+}
+
+.galleryItem-name {
+  margin: 5px 0px 6px 15px;
+}
+
+.galleryItem-name p {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.galleryItem-author,
+.galleryItem-location,
+.galleryItem-created {
+  display: flex;
+  margin: 0px 0px 5px 15px;
+
+  & p {
+    font-size: 13px;
+    line-height: 20px;
+    margin-right: 8px;
+
+    &:first-child {
+      font-weight: 600;
+    }
+  }
+}
+
+.galleryItem-author p {
+  margin-right: 4px;
 }
 
 .galleryItem-stopper {

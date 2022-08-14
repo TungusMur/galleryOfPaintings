@@ -3,4 +3,16 @@
   margin: auto;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 1366px) {
+    width: calc(100% - 42px - 42px);
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: calc(100% - 34px - 34px);
+  }
+
+  @media screen and (max-width: 768px) {
+    width: calc(100% - 20px - 20px);
+  }
 }

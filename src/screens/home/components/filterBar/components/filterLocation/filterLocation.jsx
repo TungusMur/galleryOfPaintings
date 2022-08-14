@@ -19,7 +19,10 @@ const FilterLocation = ({ searchParams, setSearchParams }) => {
   useOutsideClick(filterRef, handlerClick);
 
   return (
-    <div className="filterLocation filterItem" ref={filterRef}>
+    <div
+      className={`filterLocation filterItem ${active ? "active" : ""}`}
+      ref={filterRef}
+    >
       <div
         className={`filterLocation-action filterItem-action ${
           active ? "active" : ""

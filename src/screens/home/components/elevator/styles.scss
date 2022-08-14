@@ -1,6 +1,18 @@
 .elevator {
   width: auto;
-  margin: 20px 0px;
+  margin: 20px 0px 97px;
+
+  @media screen and (max-width: 1366px) {
+    margin-bottom: 62px;
+  }
+
+  @media screen and (max-width: 1366px) {
+    margin-bottom: 54px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin: 0px 0px 34px;
+  }
 }
 
 .elevator-form {
@@ -14,22 +26,29 @@
   height: 41px;
   display: flex;
   justify-content: center;
-  outline: 1px solid #000;
+  outline: 1px solid var(--border-color-button);
   border: 0;
-  background: #fff;
+  background: var(--background-color);
+  cursor: pointer;
 
   &:hover {
-    background: #ededed;
+    background: var(--background-color-buttonHover);
   }
 
-  p {
+  h1 {
     align-self: center;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--text-color);
   }
 
   &_number {
     &.active {
-      background: #000;
-      color: #fff;
+      background: var(--background-color-buttonActive);
+
+      h1 {
+        color: var(--text-color-buttonActive);
+      }
     }
   }
 
@@ -38,10 +57,10 @@
   &_back,
   &_next {
     &.notActive {
-      outline-color: rgba(0, 0, 0, 0.3);
+      outline-color: var(--border-color-buttonNotActive);
 
       &:hover {
-        background: #fff;
+        background: var(--background-color);
       }
     }
   }

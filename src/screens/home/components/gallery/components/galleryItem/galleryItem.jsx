@@ -1,14 +1,21 @@
 import React from "react";
+import LoadingLight from "@assets/img/light/loading.gif";
+import LoadingDark from "@assets/img/dark/loading.gif";
 import "./styles.scss";
 
-const GalleryItem = ({ img, name, author, created, location }) => {
+const GalleryItem = ({ img, name, author, created, location, themeState }) => {
   return (
     <div className="galleryItem">
       <div
         className="galleryItem__img"
         style={{ backgroundImage: `url(${process.env.BASE_URL + img})` }}
       ></div>
-      <div className="galleryItem-stopper"></div>
+      <div className="galleryItem-stopper">
+        {/* <img
+          className="galleryItem-stopper__img"
+          src={themeState === "dark" ? LoadingDark : LoadingLight}
+        /> */}
+      </div>
       <div className="galleryItem-content">
         <div className="galleryItem-name">
           <p>{name}</p>

@@ -1,6 +1,10 @@
 .filterDateItem {
   width: 95px;
   height: 45px;
+
+  @media screen and (max-width: 1366px) {
+    width: 110px;
+  }
 }
 
 .filterDateItem__input {

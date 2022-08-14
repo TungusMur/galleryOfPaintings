@@ -1,6 +1,77 @@
 @import "@styles/reset.scss";
+@import url("@styles/fonts.scss");
 
 #root {
   width: 1366px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (max-width: 1366px) {
+    width: 1024px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 768px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 320px;
+  }
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+input {
+  font-family: "Roboto-Normal";
+}
+
+p {
+  font-family: "Roboto-Normal";
+  font-size: 13px;
+}
+
+h1 {
+  font-family: "Roboto-Normal";
+  font-size: 18px;
+}
+
+h2 {
+  font-family: "Roboto-Normal";
+  font-size: 16px;
+}
+
+html[data-theme="light"] {
+  --background-color: #ffffff;
+  --background-color-filter: #ffffff;
+  --background-color-filterHover: #000000;
+  --background-color-filterDate: #efefef;
+  --border-color-input: rgba(0, 0, 0, 0.3);
+  --border-color-input-active: #000000;
+  --text-color-input: #000000;
+  --text-color: #000000;
+  --text-color-buttonActive: #ffffff;
+  --background-color-buttonActive: #000000;
+  --background-color-buttonHover: #ededed;
+  --border-color-button: #000000;
+  --border-color-buttonNotActive: rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] {
+  --background-color: #000000;
+  --background-color-filter: #0c0c0c;
+  --background-color-filterHover: #ffffff;
+  --background-color-filterDate: #ffffff;
+  --border-color-input: #ffffff;
+  --border-color-input-active: #ffffff;
+  --text-color-input: #ffffff;
+  --text-color: #ffffff;
+  --text-color-buttonActive: #000000;
+  --background-color-buttonActive: #ffffff;
+  --background-color-buttonHover: #464646;
+  --border-color-button: #ffffff;
+  --border-color-buttonNotActive: rgba(255, 255, 255, 0.3);
 }
